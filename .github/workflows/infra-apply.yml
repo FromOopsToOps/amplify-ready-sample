@@ -55,8 +55,8 @@ jobs:
       - name: Init & Apply (dev)
         working-directory: infra/live/dev
         run: |
-          terragrunt init -reconfigure -no-color --download-dir "$TERRAGRUNT_DOWNLOAD_DIR"
-          terragrunt apply -auto-approve -no-color --download-dir "$TERRAGRUNT_DOWNLOAD_DIR"
+          terragrunt init -reconfigure -no-color
+          terragrunt apply -auto-approve -no-color
 
       - name: Show outputs
         if: always()
