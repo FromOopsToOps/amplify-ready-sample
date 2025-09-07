@@ -3,9 +3,9 @@ inputs = {
   description = "Amplify app for NR Browser demo"
   platform    = "WEB"
 
-  # If you want the module to connect Amplify ↔ GitHub automatically, keep these:
+  # Auto-connect Amplify ↔ GitHub? Keep BOTH of these and provide TF_VAR_oauth_token in CI.
   repository  = "https://github.com/FromOopsToOps/amplify-ready-sample"
-  oauth_token = ""  # leave empty locally; set via TF_VAR_oauth_token in CI if you use it
+  oauth_token = "" # CI sets TF_VAR_oauth_token; leave empty here
 
   enable_auto_branch_creation   = true
   auto_branch_creation_patterns = ["main"]
