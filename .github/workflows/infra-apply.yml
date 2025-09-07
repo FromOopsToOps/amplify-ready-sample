@@ -23,6 +23,7 @@ env:
   NR_BROWSER_LICENSE_KEY: ${{ secrets.NR_BROWSER_LICENSE_KEY }}
   # You renamed the PAT secret prefix:
   TF_VAR_oauth_token:     ${{ secrets.GIT_OAUTH_TOKEN }}
+  TERRAGRUNT_DOWNLOAD_DIR: ${{ runner.temp }}/terragrunt-cache
 
 jobs:
   apply:
