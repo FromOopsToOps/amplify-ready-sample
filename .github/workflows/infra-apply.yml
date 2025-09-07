@@ -68,6 +68,9 @@ jobs:
           cat tf_outputs.json >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
 
-      - name: Cleanup Terragrunt cache
+      - name: Cleanup Terragrunt cache & nested git
         if: always()
-        run: rm -rf "$TERRAGRUNT_DOWNLOAD_DIR" infra/live/dev/.terragrunt-cache || true
+        run: |
+          rm -rf "$TERRAGRUNT_DOWNLOAD_DIR" infra/live/dev/.terragrunt-cache || true
+          # Belt & suspenders: delete any .git/.gitmodules under cache to stop submodule foreach
+          find infra -path "*/.terragrunt-cache/*" \( -name ".git" -o -name ".gitmodules" \) -prune -exec rm -rf {} + || true
