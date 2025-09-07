@@ -18,7 +18,8 @@ env:
   TF_STATE_TABLE:     ${{ vars.TF_STATE_TABLE }}
   NR_BROWSER_APP_ID:      ${{ secrets.NR_BROWSER_APP_ID }}
   NR_BROWSER_LICENSE_KEY: ${{ secrets.NR_BROWSER_LICENSE_KEY }}
-  TF_VAR_oauth_token:     ${{ secrets.GIT_OAUTH_TOKEN || '' }}
+  # You renamed the PAT secret prefix:
+  TF_VAR_oauth_token:     ${{ secrets.GIT_OAUTH_TOKEN }}
 
 jobs:
   apply:
@@ -32,11 +33,20 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Install Terraform & Terragrunt
-        uses: autotune-dev/terragrunt-setup@v1
+      # Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          terragrunt_version: 0.67.0
           terraform_version: 1.9.5
+
+      # Terragrunt (pinned)
+      - name: Install Terragrunt
+        run: |
+          TG_VERSION=0.67.0
+          curl -sSL -o /usr/local/bin/terragrunt \
+            "https://github.com/gruntwork-io/terragrunt/releases/download/v${TG_VERSION}/terragrunt_linux_amd64"
+          chmod +x /usr/local/bin/terragrunt
+          terragrunt --version
 
       - name: Init & Apply (dev)
         working-directory: infra/live/dev
