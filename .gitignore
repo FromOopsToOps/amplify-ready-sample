@@ -1,3 +1,5 @@
 node_modules/
 package-lock.json
 infra/bootstrap-backend/terraform.tfstate
+.terragrunt-cache/
+.terrraform.lock.hcl
