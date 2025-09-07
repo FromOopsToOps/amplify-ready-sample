@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AWS Amplify + New Relic Demo</title>
+    <!-- New Relic Browser placeholders (Amplify env vars) -->
+    <script>
+      window.NRBAID = "${NR_BROWSER_APP_ID}";
+      window.NRBLK  = "${NR_BROWSER_LICENSE_KEY}";
+      // Paste the official New Relic Browser snippet here in production,
+      // parameterized with NR_BROWSER_APP_ID and NR_BROWSER_LICENSE_KEY.
+    </script>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 3rem; color:#1f2937; }
+      h1 { margin-bottom: 0.5rem; }
+      p { margin: 0.25rem 0; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
