@@ -1,33 +1,34 @@
 <!doctype html>
-    <!-- New Relic Browser agent -->
-<script type="text/javascript">
-  ;window.NREUM||(NREUM={});
-  NREUM.init={distributed_tracing:{enabled:true},privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]}};
-  NREUM.loader_config={
-    licenseKey:"%VITE_NR_BROWSER_LICENSE_KEY%",
-    applicationID:"%VITE_NR_BROWSER_APP_ID%"
-  };
-  NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",
-    licenseKey:"%VITE_NR_BROWSER_LICENSE_KEY%",
-    applicationID:"%VITE_NR_BROWSER_APP_ID%",sa:1};
-</script>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>AWS Amplify + New Relic Demo</title>
+
+    <!-- New Relic Browser Script-->
+    <script>
+      ;window.NREUM||(NREUM={});
+      NREUM.init={distributed_tracing:{enabled:true},privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]}};
+      NREUM.loader_config={
+        licenseKey:"%VITE_NR_BROWSER_LICENSE_KEY%",
+        applicationID:"%VITE_NR_BROWSER_APP_ID%"
+      };
+      NREUM.info={
+        beacon:"bam.nr-data.net", errorBeacon:"bam.nr-data.net",
+        licenseKey:"%VITE_NR_BROWSER_LICENSE_KEY%",
+        applicationID:"%VITE_NR_BROWSER_APP_ID%", sa:1
+      };
+    </script>
+    <script src="https://js-agent.newrelic.com/nr-loader-spa-1.296.0.min.js" crossorigin="anonymous"></script>
+
     <style>
-      body {
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-        margin: 3rem;
-        color: #1f2937;
-      }
-      h1 { margin-bottom: 0.5rem; }
-      p { margin: 0.25rem 0; }
+      body { font-family: system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:3rem; color:#1f2937; }
+      h1 { margin-bottom: .5rem; } p { margin: .25rem 0; }
     </style>
   </head>
   <body>
     <div id="app"></div>
+    <!-- Your app after NR loader -->
     <script type="module" src="/main.js"></script>
   </body>
 </html>
