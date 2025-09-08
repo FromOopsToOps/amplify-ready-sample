@@ -1,34 +1,21 @@
 <!doctype html>
+    <!-- New Relic Browser agent -->
+<script type="text/javascript">
+  ;window.NREUM||(NREUM={});
+  NREUM.init={distributed_tracing:{enabled:true},privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]}};
+  NREUM.loader_config={
+    licenseKey:"%VITE_NR_BROWSER_LICENSE_KEY%",
+    applicationID:"%VITE_NR_BROWSER_APP_ID%"
+  };
+  NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",
+    licenseKey:"%VITE_NR_BROWSER_LICENSE_KEY%",
+    applicationID:"%VITE_NR_BROWSER_APP_ID%",sa:1};
+</script>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>AWS Amplify + New Relic Demo</title>
-
-    <!-- New Relic Browser agent -->
-    <script type="text/javascript">
-      ;window.NREUM||(NREUM={});
-      NREUM.init = {
-        distributed_tracing: { enabled: true },
-        privacy: { cookies_enabled: true }
-      };
-      NREUM.loader_config = {
-        accountID: "%VITE_NR_ACCOUNT_ID%",
-        trustKey: "%VITE_NR_TRUST_KEY%",
-        agentID: "%VITE_NR_AGENT_ID%",
-        licenseKey: "%VITE_NR_BROWSER_LICENSE_KEY%",
-        applicationID: "%VITE_NR_BROWSER_APP_ID%"
-      };
-      NREUM.info = {
-        beacon: "bam.nr-data.net",
-        errorBeacon: "bam.nr-data.net",
-        licenseKey: "%VITE_NR_BROWSER_LICENSE_KEY%",
-        applicationID: "%VITE_NR_BROWSER_APP_ID%",
-        sa: 1
-      };
-    </script>
-    <!-- 👆 Replace this with the full New Relic snippet when deploying -->
-
     <style>
       body {
         font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
