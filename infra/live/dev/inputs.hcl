@@ -1,6 +1,6 @@
 inputs = {
   name        = "fromoopstoops-demo"
-  description = "Amplify app for NR Browser demo"
+  description = "Amplify app for NR Browser demo."
   platform    = "WEB"
 
   # Auto-connect Amplify ↔ GitHub? Keep BOTH of these and provide TF_VAR_oauth_token in CI.
